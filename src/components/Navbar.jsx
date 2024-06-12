@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -10,19 +11,25 @@ const Navbar = () => {
 
   return (
     <div className=" flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4">
-      <div className="hover:cursor-pointer flex justify-center items-center">
-        <img src="src/assets/logo.png" className="w-[56px]" alt="logo" />
-        <h1 className="w-full text-3xl font-bold">
-          Acade<span className="text-primary">mix</span>
-        </h1>
-      </div>
+      <Link to="/">
+        <div className="hover:cursor-pointer flex justify-center items-center">
+          <img src="src/assets/logo.png" className="w-[56px]" alt="logo" />
+          <h1 className="w-full text-3xl font-bold">
+            Acade<span className="text-primary">mix</span>
+          </h1>
+        </div>
+      </Link>
       <div>
         <ul className="hidden md:flex justify-center items-center gap-4  hover:cursor-pointer ">
-          <li className="">Home</li>
+          <li className="">
+            <Link to="/">Home</Link>
+          </li>
           <li className="">Courses</li>
           <li className="">Instructor</li>
           <li className="">About</li>
-          <li className="py-2 px-5 rounded-md text-white bg-primary">Log in</li>
+          <li className="w-24 h-10 flex justify-center items-center text-white bg-primary">
+            <Link to="/login">Log in</Link>
+          </li>
         </ul>
         <div className="block md:hidden" onClick={handleNav}>
           {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}

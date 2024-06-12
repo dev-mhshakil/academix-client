@@ -25,12 +25,9 @@ const Login = () => {
             />
           </div>
 
-          <div className="flex flex-col justify-center">
-            <button
-              type="submit"
-              className="bg-primary text-white py-3 px-6 rounded-md mt-6"
-            >
-              Sign In
+          <div className="flex flex-col justify-center items-center mt-8">
+            <button className=" before:ease relative h-12 w-full overflow-hidden border border-primary bg-primary text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-[500px]">
+              <span className="relative z-10">Shine</span>
             </button>
             <p className="mt-6 text-center">
               Don&apos;t have an account?{" "}

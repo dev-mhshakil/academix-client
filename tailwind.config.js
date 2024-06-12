@@ -7,7 +7,7 @@ export default {
         primary: ["Inter"],
       },
       colors: {
-        primary: "#2f27ce",
+        primary: "#4f46e5",
         secondary: "#dedcff",
         backgroundColor: "#fbfbfe",
         accent: "#433bff",
