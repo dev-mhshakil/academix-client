@@ -1,11 +1,26 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const { login } = useAuth();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    login(email, password).then((result) => {
+      if (result?.user?.email) {
+        toast.success("Login success");
+      }
+    });
+  };
   return (
     <div className="max-w-[1240px] h-[calc(100vh-96px)] mx-auto">
       <div className="max-w-[540px] mx-auto border rounded-md border-t-2 border-t-primary px-6 py-12 shadow-md">
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
           <div className="flex flex-col mt-6">
             <label htmlFor="">Email Address</label>
             <input
@@ -25,9 +40,12 @@ const Login = () => {
             />
           </div>
 
-          <div className="flex flex-col justify-center items-center mt-8">
-            <button className=" before:ease relative h-12 w-full overflow-hidden border border-primary bg-primary text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-[500px]">
-              <span className="relative z-10">Shine</span>
+          <div className="flex flex-col justify-center">
+            <button
+              type="submit"
+              className="bg-primary w-full text-white py-3 px-6 rounded-md mt-6"
+            >
+              Sign In
             </button>
             <p className="mt-6 text-center">
               Don&apos;t have an account?{" "}

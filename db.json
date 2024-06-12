@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Python",
+    "description": "Learn the basics of Python programming, including syntax, variables, and data types.",
+    "instructor": "Jane Doe",
+    "duration": "4 weeks",
+    "level": "Beginner",
+    "price": 49.99
+  },
+  {
+    "id": 2,
+    "title": "Advanced JavaScript",
+    "description": "Master advanced JavaScript concepts such as closures, asynchronous programming, and ES6 features.",
+    "instructor": "John Smith",
+    "duration": "6 weeks",
+    "level": "Advanced",
+    "price": 79.99
+  },
+  {
+    "id": 3,
+    "title": "Data Science with R",
+    "description": "Explore data analysis, visualization, and machine learning techniques using R programming language.",
+    "instructor": "Emily Johnson",
+    "duration": "8 weeks",
+    "level": "Intermediate",
+    "price": 99.99
+  },
+  {
+    "id": 4,
+    "title": "Web Development Bootcamp",
+    "description": "A comprehensive guide to full-stack web development, covering HTML, CSS, JavaScript, and backend technologies.",
+    "instructor": "Michael Brown",
+    "duration": "12 weeks",
+    "level": "Beginner to Advanced",
+    "price": 199.99
+  },
+  {
+    "id": 5,
+    "title": "Digital Marketing Essentials",
+    "description": "Learn the fundamentals of digital marketing, including SEO, social media marketing, and email campaigns.",
+    "instructor": "Sophia Davis",
+    "duration": "5 weeks",
+    "level": "Beginner",
+    "price": 59.99
+  },
+  {
+    "id": 6,
+    "title": "Machine Learning A-Z",
+    "description": "A complete course on machine learning, covering supervised and unsupervised learning, neural networks, and deep learning.",
+    "instructor": "David Wilson",
+    "duration": "10 weeks",
+    "level": "Intermediate to Advanced",
+    "price": 149.99
+  },
+  {
+    "id": 7,
+    "title": "Graphic Design Masterclass",
+    "description": "Master graphic design principles and tools, including Adobe Photoshop, Illustrator, and InDesign.",
+    "instructor": "Olivia Martinez",
+    "duration": "8 weeks",
+    "level": "Beginner to Intermediate",
+    "price": 89.99
+  }
+]

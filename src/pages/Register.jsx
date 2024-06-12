@@ -1,58 +1,124 @@
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const { createUser } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const firstName = form.firstname.value;
+    const lastName = form.lastname.value;
+    const email = form.email.value;
+    const role = form.role.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const result = await createUser(email, password);
+      form.reset();
+      console.log(result);
+
+      if (result?.user?.email) {
+        const user = {
+          email: result.user.email,
+          name: `${firstName} ${lastName}`,
+          role: role,
+        };
+
+        axios
+          .post("http://localhost:3000/user", user)
+          .then(function (response) {
+            console.log(response);
+            if (response.status === 400) {
+              toast.error("Email already registered.");
+            } else if (response.status === 200) {
+              toast.success("Registration Complete.");
+            }
+          });
+      }
+    } catch (error) {
+      toast.error("Email already registered. Try another email address.");
+    }
+  };
+
   return (
-    <div className="max-w-[1240px] h-[calc(100vh-96px)] mx-auto">
+    <div className="max-w-[1240px] h-full my-10 px-4 md:px-0 md:my-0 md:h-[calc(100vh-96px)] mx-auto">
       <div className="max-w-[540px] mx-auto border rounded-md border-t-2 border-t-primary px-6 py-12 shadow-md">
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
           <div className="flex flex-col">
-            <label htmlFor="">First Name</label>
+            <label htmlFor="firstname">First Name</label>
             <input
               type="text"
               id="firstname"
+              name="firstname"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="first name"
             />
           </div>
           <div className="flex flex-col mt-6">
-            <label htmlFor="">Last Name</label>
+            <label htmlFor="lastname">Last Name</label>
             <input
               type="text"
               id="lastname"
+              name="lastname"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="last name"
             />
           </div>
           <div className="flex flex-col mt-6">
-            <label htmlFor="">Email Address</label>
+            <label htmlFor="email">Email Address</label>
             <input
-              type="text"
+              type="email"
               id="email"
+              name="email"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="email address"
             />
           </div>
           <div className="flex flex-col mt-6">
-            <label htmlFor="">Password</label>
+            <label htmlFor="role">Register as</label>
+            <select
+              name="role"
+              className="border py-3 rounded-md outline-primary mt-3 px-4"
+            >
+              <option value="student" defaultValue="student">
+                Student
+              </option>
+              <option value="instructor">Instructor</option>
+            </select>
+          </div>
+          <div className="flex flex-col mt-6">
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
+              name="password"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="password"
             />
           </div>
           <div className="flex flex-col mt-6">
-            <label htmlFor="">Confirm Password</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
               id="confirmPassword"
+              name="confirmPassword"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="confirm password"
             />
           </div>
           <div className="flex flex-col justify-center items-center mt-8">
-            <button className=" before:ease relative h-12 w-full overflow-hidden border border-primary bg-primary text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-[500px]">
-              <span className="relative z-10">Shine</span>
+            <button className="bg-primary w-full text-white py-3 px-6 rounded-md mt-6">
+              Register
             </button>
             <p className="mt-6 text-center">
               Already have an account?{" "}
