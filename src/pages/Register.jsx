@@ -1,7 +1,7 @@
-import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
+import GoogleLogin from "../components/google-login/GoogleLogin";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -51,7 +51,7 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-[1240px] h-full my-10 px-4 md:px-0 md:my-0 md:h-[calc(100vh-96px)] mx-auto">
+    <div className="max-w-[1240px] h-full my-10 px-4 md:px-0 md:my-0 mx-auto">
       <div className="max-w-[540px] mx-auto border rounded-md border-t-2 border-t-primary px-6 py-12 shadow-md">
         <form onSubmit={handleSubmit} action="">
           <div className="flex flex-col">
@@ -129,10 +129,7 @@ const Register = () => {
           </div>
         </form>
         <div>
-          <button className="flex justify-center items-center gap-4 bg-secondary w-full py-3 px-6 rounded-md mt-6">
-            <FcGoogle size={20} />
-            Google
-          </button>
+          <GoogleLogin />
         </div>
       </div>
     </div>

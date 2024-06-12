@@ -1,8 +1,8 @@
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 import toast from "react-hot-toast";
+import GoogleLogin from "../components/google-login/GoogleLogin";
 
 const Login = () => {
   const { login } = useAuth();
@@ -56,10 +56,7 @@ const Login = () => {
           </div>
         </form>
         <div>
-          <button className="flex justify-center items-center gap-4 bg-secondary w-full py-3 px-6 rounded-md mt-6">
-            <FcGoogle size={20} />
-            Google
-          </button>
+          <GoogleLogin />
         </div>
       </div>
     </div>
