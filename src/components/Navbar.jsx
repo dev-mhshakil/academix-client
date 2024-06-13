@@ -24,9 +24,13 @@ const Navbar = () => {
           <li className="">
             <Link to="/">Home</Link>
           </li>
-          <li className="">Courses</li>
-          <li className="">Instructor</li>
-          <li className="">About</li>
+          <li className="">
+            <Link to="/courses">Courses</Link>
+          </li>
+          <li className="">
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li className="">Contact</li>
           <li className="w-24 h-10 flex justify-center items-center text-white bg-primary">
             <Link to="/login">Log in</Link>
           </li>
@@ -49,16 +53,16 @@ const Navbar = () => {
           </div>
           <ul className="uppercase p-4 font-semibold">
             <li className="p-4 border-b border-blue-200 hover:cursor-pointer ">
-              Home
+              <Link to="/">Home</Link>
             </li>
             <li className="p-4 border-b border-blue-200 hover:cursor-pointer">
-              Courses
+              <Link to="/courses/">Course</Link>
             </li>
             <li className="p-4 border-b border-blue-200 hover:cursor-pointer ">
-              Instructor
+              <Link to="/blog">Blog</Link>
             </li>
             <li className="p-4 border-b border-blue-200 hover:cursor-pointer">
-              About
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>
