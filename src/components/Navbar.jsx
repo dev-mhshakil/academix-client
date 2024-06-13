@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -30,10 +32,22 @@ const Navbar = () => {
           <li className="">
             <Link to="/blog">Blog</Link>
           </li>
-          <li className="">Contact</li>
-          <li className="w-24 h-10 flex justify-center items-center text-white bg-primary">
-            <Link to="/login">Log in</Link>
+          <li className="">
+            <Link to="/contact">Contact</Link>
           </li>
+          {!user?.email ? (
+            <>
+              <li className="w-24 h-10 flex justify-center items-center text-white bg-primary">
+                <Link to="/login">Log in</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="">
+                <Link to="dashboard">Dashboard</Link>
+              </li>
+            </>
+          )}
         </ul>
         <div className="block md:hidden" onClick={handleNav}>
           {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
@@ -64,6 +78,19 @@ const Navbar = () => {
             <li className="p-4 border-b border-blue-200 hover:cursor-pointer">
               <Link to="/contact">Contact</Link>
             </li>
+            {!user?.email ? (
+              <>
+                <li className="w-24 h-10 flex justify-center items-center text-white bg-primary">
+                  <Link to="/login">Log in</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="">
+                  <Link to="dashboard">Dashboard</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

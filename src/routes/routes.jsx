@@ -7,6 +7,10 @@ import Error from "../pages/Error";
 import Contact from "../pages/Contact";
 import Blog from "../pages/Blog";
 import Courses from "../pages/Courses";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../components/dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import UsersList from "../components/dashboard/UsersList";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +41,33 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <PrivateRoute>
+            <UsersList />
+          </PrivateRoute>
+        ),
       },
     ],
   },

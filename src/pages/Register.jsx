@@ -2,9 +2,16 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import GoogleLogin from "../components/google-login/GoogleLogin";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, user } = useAuth();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +56,12 @@ const Register = () => {
       toast.error("Email already registered. Try another email address.");
     }
   };
+
+  useEffect(() => {
+    if (user?.email) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
 
   return (
     <div className="max-w-[1240px] h-full my-10 px-4 md:px-0 md:my-0 mx-auto">

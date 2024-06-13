@@ -4,7 +4,7 @@ import { MdOutlineAssignment } from "react-icons/md";
 
 const CourseCard = () => {
   return (
-    <div className="border border-secondary/60 rounded-md hover:outline hover:outline-primary">
+    <div className="mx-4 md:mx-0 border border-secondary/60 rounded-md hover:outline hover:outline-primary">
       <div>
         <img src="src/assets/course.png" alt="" className="w-96 h-96" />
       </div>

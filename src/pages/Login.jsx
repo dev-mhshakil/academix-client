@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 import toast from "react-hot-toast";
 import GoogleLogin from "../components/google-login/GoogleLogin";
+import { useEffect } from "react";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +23,12 @@ const Login = () => {
       }
     });
   };
+
+  useEffect(() => {
+    if (user?.email) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
   return (
     <div className="max-w-[1240px] h-[calc(100vh-96px)] mx-auto">
       <div className="max-w-[540px] mx-auto border rounded-md border-t-2 border-t-primary px-6 py-12 shadow-md">
