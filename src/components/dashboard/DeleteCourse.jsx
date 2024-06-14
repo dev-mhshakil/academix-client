@@ -13,6 +13,8 @@ const DeleteCourse = () => {
 
   const [courseData, setCourseData] = useState();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     axios
       .get(`http://localhost:8000/course/${id}`)
@@ -26,7 +28,11 @@ const DeleteCourse = () => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:8000/course/${id}`)
+      .delete(`http://localhost:8000/course/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         toast.success("Course Deleted successfully");
         document.getElementById("my_modal_5").close();

@@ -12,6 +12,8 @@ const EditCourse = () => {
 
   const id = useParams();
 
+  const token = localStorage.getItem("token");
+
   // get user data from server
   useEffect(() => {
     if (user?.email) {
@@ -61,7 +63,12 @@ const EditCourse = () => {
     try {
       const response = await axios.patch(
         `http://localhost:8000/course/edit/${id?.id}`,
-        courseData
+        courseData,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       toast.success("Course edited successfully");
     } catch (error) {
