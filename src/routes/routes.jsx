@@ -15,6 +15,9 @@ import AddCourse from "../components/dashboard/AddCourse";
 import AllCourses from "../components/dashboard/AllCourses";
 import EditCourse from "../components/dashboard/EditCourse";
 import DeleteCourse from "../components/dashboard/DeleteCourse";
+import SuccessPage from "../components/payment/SuccessPage";
+import CancelPage from "../components/payment/CancelPage";
+import CheckOut from "../components/payment/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,30 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/success",
+        element: (
+          <PrivateRoute>
+            <SuccessPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/cancel",
+        element: (
+          <PrivateRoute>
+            <CancelPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },

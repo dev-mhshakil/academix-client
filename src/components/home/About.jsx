@@ -5,7 +5,11 @@ const About = () => {
     <div className="max-w-[1240px] mx-auto py-4 my-12 md:my-32">
       <div className="flex flex-col md:flex-row justify-center items-center gap-4">
         <div className="flex justify-center items-center w-full md:w-[50%] px-4 md:px-0">
-          <img src="src/assets/banner-about.png" alt="" className="" />
+          <img
+            src="https://i.ibb.co/cxjW8F2/banner-about.png"
+            alt=""
+            className=""
+          />
         </div>
         <div className="w-full md:w-[50%] px-4 md:px-0">
           <p className="text-md text-primary font-semibold text-center md:text-left">

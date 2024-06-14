@@ -4,7 +4,11 @@ const Error = () => {
   return (
     <div className="max-w-[1240px] mx-auto">
       <div className="mt-40 md:mt-16">
-        <img src="src/assets/404.png" alt="" className="w-[700px] mx-auto" />
+        <img
+          src="https://i.ibb.co/mc1sbNZ/404.png"
+          alt=""
+          className="w-[700px] mx-auto"
+        />
         <div className="flex justify-center items-center">
           <Link to="/">
             {" "}

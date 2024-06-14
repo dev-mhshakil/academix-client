@@ -6,6 +6,7 @@ import { HiMiniUsers } from "react-icons/hi2";
 import { IoIosAddCircle } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { FaHome } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { logout } = useAuth();
@@ -38,6 +39,12 @@ const DashboardLayout = () => {
 
         <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content flex flex-col">
           {/* Sidebar content here */}
+          <li>
+            <Link to="/">
+              <FaHome size={20} />
+              <span className="text-base md:text-lg ml-2">Home</span>
+            </Link>
+          </li>
           <li>
             <Link to="/dashboard">
               <GiPieChart size={20} />

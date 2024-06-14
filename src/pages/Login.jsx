@@ -36,7 +36,7 @@ const Login = () => {
           <div className="flex flex-col mt-6">
             <label htmlFor="">Email Address</label>
             <input
-              type="text"
+              type="email"
               id="email"
               className="border py-3 rounded-md outline-primary mt-3 px-4"
               placeholder="email address"

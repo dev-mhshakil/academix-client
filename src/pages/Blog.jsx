@@ -10,7 +10,7 @@ const Blog = () => {
           <div className=" md:w-full max-h-[800px] mx-4 border border-secondary/60 rounded-sm shadow-sm">
             <div className="">
               <img
-                src="src/assets/blog-3.png"
+                src="https://i.ibb.co/c2yb8xR/blog-3.png"
                 alt=""
                 className="w-full h-full"
               />
@@ -49,7 +49,7 @@ const Blog = () => {
           <div className=" md:w-full max-h-[800px] mt-6 md:mt-20 mx-4 border border-secondary/60 rounded-sm shadow-sm">
             <div className="">
               <img
-                src="src/assets/blog-3.png"
+                src="https://i.ibb.co/c2yb8xR/blog-3.png"
                 alt=""
                 className="w-full h-full"
               />

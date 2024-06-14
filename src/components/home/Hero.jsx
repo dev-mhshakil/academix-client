@@ -33,7 +33,11 @@ const Hero = () => {
             </div>
           </div>
           <div className="w-full md:w-[60%] order-first md:order-last">
-            <img src="src/assets/hero.png" alt="hero" className="" />
+            <img
+              src="https://i.ibb.co/pJjbDnx/hero.png"
+              alt="hero"
+              className=""
+            />
           </div>
         </div>
       </div>

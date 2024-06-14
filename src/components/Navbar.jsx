@@ -4,18 +4,26 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div className=" flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4">
       <Link to="/">
         <div className="hover:cursor-pointer flex justify-center items-center">
-          <img src="src/assets/logo.png" className="w-[56px]" alt="logo" />
+          <img
+            src="https://i.ibb.co/X8GW0QS/logo.png"
+            className="w-[56px]"
+            alt="logo"
+          />
           <h1 className="w-full text-3xl font-bold">
             Acade<span className="text-primary">mix</span>
           </h1>
@@ -46,6 +54,14 @@ const Navbar = () => {
               <li className="">
                 <Link to="dashboard">Dashboard</Link>
               </li>
+              <li className="flex items-center justify-center">
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 flex justify-center bg-primary hover:bg-primary/90 text-white text-base md:text-lg "
+                >
+                  Logout
+                </button>
+              </li>
             </>
           )}
         </ul>
@@ -60,7 +76,11 @@ const Navbar = () => {
           }
         >
           <div className="hover:cursor-pointer p-6 flex justify-center items-center">
-            <img src="src\assets\logo.png" alt="logo" width="56px" />
+            <img
+              src="https://i.ibb.co/X8GW0QS/logo.png"
+              alt="logo"
+              width="56px"
+            />
             <h1 className="w-full text-3xl font-bold">
               Acade<span className="text-primary">mix</span>
             </h1>
@@ -88,6 +108,14 @@ const Navbar = () => {
               <>
                 <li className="p-4 border-b border-blue-200 hover:cursor-pointer">
                   <Link to="dashboard">Dashboard</Link>
+                </li>
+                <li className="flex items-center justify-center p-4">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full h-10 flex justify-center items-center bg-primary hover:bg-primary/90 text-white "
+                  >
+                    Logout
+                  </button>
                 </li>
               </>
             )}

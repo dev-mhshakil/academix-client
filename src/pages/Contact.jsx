@@ -3,7 +3,7 @@ const Contact = () => {
     <div className="max-w-[1240px] mx-auto p-4 md:p-0">
       <div className="flex flex-col md:flex-row gap-4 h-full md:h-[calc(100vh-96px)] mt-24">
         <div className="w-full md:w-[50%]">
-          <img src="src/assets/mail.png" alt="" />
+          <img src="https://i.ibb.co/vktqmkR/mail.png" alt="" />
         </div>
         <div className="w-full md:w-[50%]">
           <p className="text-primary">Send us email</p>
