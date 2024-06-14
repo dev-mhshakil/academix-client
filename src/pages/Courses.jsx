@@ -6,7 +6,7 @@ const Courses = () => {
   const [courses, setCourses] = useState();
 
   axios
-    .get("https://academix-server-xe39.onrender.com//courses")
+    .get("https://academix-server-xe39.onrender.com/courses")
     .then(function (response) {
       setCourses(response.data);
     });

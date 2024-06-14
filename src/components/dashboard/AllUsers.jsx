@@ -7,7 +7,7 @@ const AllUsers = () => {
 
   useEffect(() => {
     axios
-      .get("https://academix-server-xe39.onrender.com//users")
+      .get("https://academix-server-xe39.onrender.com/users")
       .then((response) => {
         setUsersList(response?.data);
       });

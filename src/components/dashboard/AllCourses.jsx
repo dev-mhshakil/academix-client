@@ -8,7 +8,7 @@ const AllCourses = () => {
   useEffect(() => {
     async function load() {
       axios
-        .get("https://academix-server-xe39.onrender.com//courses")
+        .get("https://academix-server-xe39.onrender.com/courses")
         .then((response) => {
           setCourses(response?.data);
         });

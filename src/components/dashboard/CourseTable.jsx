@@ -19,7 +19,7 @@ const CourseTable = ({ course, index }) => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://academix-server-xe39.onrender.com//user/${user?.email}`)
+        .get(`https://academix-server-xe39.onrender.com/user/${user?.email}`)
         .then((response) => {
           setUserData(response.data);
         });
@@ -31,7 +31,7 @@ const CourseTable = ({ course, index }) => {
     if (user?.email) {
       axios
         .get(
-          `https://academix-server-xe39.onrender.com//course/edit/${course?._id}`
+          `https://academix-server-xe39.onrender.com/course/edit/${course?._id}`
         )
         .then((response) => {
           setCourseData(response.data);
@@ -51,7 +51,7 @@ const CourseTable = ({ course, index }) => {
   //   };
 
   //   const paymentResponse = await axios
-  //     .post("https://academix-server-xe39.onrender.com//create-checkout-session", coursePaymentData)
+  //     .post("https://academix-server-xe39.onrender.com/create-checkout-session", coursePaymentData)
   //     .then((response) => {
   //       console.log(response.data);
   //     });

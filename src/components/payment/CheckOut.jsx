@@ -11,7 +11,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axios
-      .get(`https://academix-server-xe39.onrender.com//course/${id?.id}`)
+      .get(`https://academix-server-xe39.onrender.com/course/${id?.id}`)
       .then((response) => {
         setCourse(response.data);
       });
@@ -31,7 +31,7 @@ const CheckOut = () => {
       phone,
     };
     axios
-      .post("https://academix-server-xe39.onrender.com//orders", orderData)
+      .post("https://academix-server-xe39.onrender.com/orders", orderData)
       .then(function (response) {
         const url = response.data.url;
         window.location.replace(url);
