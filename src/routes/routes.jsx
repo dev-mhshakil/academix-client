@@ -14,6 +14,7 @@ import AllUsers from "../components/dashboard/AllUsers";
 import AddCourse from "../components/dashboard/AddCourse";
 import AllCourses from "../components/dashboard/AllCourses";
 import EditCourse from "../components/dashboard/EditCourse";
+import DeleteCourse from "../components/dashboard/DeleteCourse";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    errorElement: <Error />,
+    // errorElement: <Error />,
     children: [
       {
         index: true,
@@ -93,6 +94,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <EditCourse />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "course/delete/:id",
+        element: (
+          <PrivateRoute>
+            <DeleteCourse />
           </PrivateRoute>
         ),
       },

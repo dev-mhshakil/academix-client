@@ -1,9 +1,42 @@
+/* eslint-disable no-unused-vars */
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 /* eslint-disable react/prop-types */
 const CourseTable = ({ course, index }) => {
+  const { user } = useAuth();
+  const [userData, setUserData] = useState();
+  const [courseData, setCourseData] = useState();
+
+  // get user data from server
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:8000/user/${user?.email}`)
+        .then((response) => {
+          console.log(response.data);
+          setUserData(response.data);
+        });
+    }
+  }, [user?.email]);
+
+  // get course data from server
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:8000/course/edit/${course?._id}`)
+        .then((response) => {
+          console.log(response.data);
+          setCourseData(response.data);
+        });
+    }
+  }, [course?._id, user?.email]);
+
+  console.log(userData?.email, courseData?.userEmail);
   return (
     <>
       <tbody>
@@ -25,10 +58,23 @@ const CourseTable = ({ course, index }) => {
             >
               <FaRegEdit size={20} /> <span>Edit</span>
             </Link>
-            <Link className="font-medium text-white px-8 py-2 bg-red-600 hover:bg-red-800 flex items-center gap-3">
-              <RiDeleteBin5Line size={20} />
-              <span>Delete</span>
-            </Link>
+            {userData?.email === courseData?.userEmail ? (
+              <Link
+                to={`/dashboard/course/delete/${course?._id}`}
+                className="font-medium text-white px-8 py-2 bg-red-600 hover:bg-red-800 flex items-center gap-3"
+              >
+                <RiDeleteBin5Line size={20} />
+                <span>Delete</span>
+              </Link>
+            ) : (
+              <button
+                className="font-medium text-white px-8 py-2 bg-slate-600 flex items-center gap-3"
+                disabled
+              >
+                <RiDeleteBin5Line size={20} />
+                <span>Delete</span>
+              </button>
+            )}
           </td>
         </tr>
       </tbody>
