@@ -10,7 +10,10 @@ import Courses from "../pages/Courses";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../components/dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import UsersList from "../components/dashboard/UsersList";
+import AllUsers from "../components/dashboard/AllUsers";
+import AddCourse from "../components/dashboard/AddCourse";
+import AllCourses from "../components/dashboard/AllCourses";
+import EditCourse from "../components/dashboard/EditCourse";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +68,31 @@ const router = createBrowserRouter([
         path: "users",
         element: (
           <PrivateRoute>
-            <UsersList />
+            <AllUsers />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-courses",
+        element: (
+          <PrivateRoute>
+            <AllCourses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-course",
+        element: (
+          <PrivateRoute>
+            <AddCourse />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "course/edit/:id",
+        element: (
+          <PrivateRoute>
+            <EditCourse />
           </PrivateRoute>
         ),
       },

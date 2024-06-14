@@ -1,11 +1,18 @@
-import { BiSolidCategory } from "react-icons/bi";
+// import { BiSolidCategory } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import { GiPieChart } from "react-icons/gi";
 import { GrTasks } from "react-icons/gr";
 import { HiMiniUsers } from "react-icons/hi2";
+import { IoIosAddCircle } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <div className="drawer drawer-mobile lg:drawer-open w-full">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -29,7 +36,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
         ></label>
 
-        <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content flex flex-col">
           {/* Sidebar content here */}
           <li>
             <Link to="/dashboard">
@@ -44,17 +51,33 @@ const DashboardLayout = () => {
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to="/dashboard/all-courses">
               <GrTasks size={20} />
-              <span className="text-base md:text-lg ml-2">Courses</span>
+              <span className="text-base md:text-lg ml-2">All Courses</span>
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to="/dashboard/add-course">
+              <IoIosAddCircle size={20} />
+              <span className="text-base md:text-lg ml-2">Add Course</span>
+            </Link>
+          </li>
+          {/* <li>
+            <Link to="/dashboard/categories">
               <BiSolidCategory size={20} />
               <span className="text-base md:text-lg ml-2">Categories</span>
             </Link>
-          </li>
+          </li> */}
+          <div className="mt-auto">
+            <li className="flex items-center justify-center">
+              <button
+                onClick={handleLogout}
+                className=" w-full h-12 flex justify-center bg-primary hover:bg-primary/90 text-white text-base md:text-lg "
+              >
+                Logout
+              </button>
+            </li>
+          </div>
         </ul>
       </div>
     </div>

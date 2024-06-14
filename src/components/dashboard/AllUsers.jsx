@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import UsersTable from "./UsersTable";
 
-const UsersList = () => {
+const AllUsers = () => {
   const [usersList, setUsersList] = useState();
 
   useEffect(() => {
@@ -40,4 +40,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default AllUsers;

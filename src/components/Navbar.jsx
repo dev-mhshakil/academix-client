@@ -86,7 +86,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li className="">
+                <li className="p-4 border-b border-blue-200 hover:cursor-pointer">
                   <Link to="dashboard">Dashboard</Link>
                 </li>
               </>
