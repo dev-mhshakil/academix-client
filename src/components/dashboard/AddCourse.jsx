@@ -8,6 +8,8 @@ const AddCourse = () => {
   const { user } = useAuth();
   const [userData, setUserData] = useState();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     if (user?.email) {
       axios.get(`http://localhost:8000/user/${user.email}`).then((response) => {
@@ -46,14 +48,19 @@ const AddCourse = () => {
     try {
       const response = await axios.post(
         "http://localhost:8000/courses",
-        courseData
+        courseData,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       toast.success("Course added successfully");
     } catch (error) {
       toast.error(error.response.data.message);
     }
 
-    // form.reset();
+    form.reset();
   };
 
   return (

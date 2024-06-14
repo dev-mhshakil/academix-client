@@ -32,7 +32,6 @@ const Register = () => {
     try {
       const result = await createUser(email, password);
       form.reset();
-      console.log(result);
 
       if (result?.user?.email) {
         const user = {
@@ -41,16 +40,14 @@ const Register = () => {
           role: role,
         };
 
-        axios
-          .post("http://localhost:3000/user", user)
-          .then(function (response) {
-            console.log(response);
-            if (response.status === 400) {
-              toast.error("Email already registered.");
-            } else if (response.status === 200) {
-              toast.success("Registration Complete.");
-            }
-          });
+        axios.post("http://locahost:8000/user", user).then(function (response) {
+          if (response.status === 400) {
+            toast.error("Email already registered.");
+          } else if (response.status === 200) {
+            toast.success("Registration Complete.");
+            localStorage.setItem("token", response.data.token);
+          }
+        });
       }
     } catch (error) {
       toast.error("Email already registered. Try another email address.");

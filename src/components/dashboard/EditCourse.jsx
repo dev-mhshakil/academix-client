@@ -11,7 +11,6 @@ const EditCourse = () => {
   const [courseData, setCourseData] = useState();
 
   const id = useParams();
-  console.log(id);
 
   // get user data from server
   useEffect(() => {

@@ -18,7 +18,6 @@ const DeleteCourse = () => {
       .get(`http://localhost:8000/course/${id}`)
       .then((response) => {
         setCourseData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error("There was an error fetching the course data!", error);
@@ -29,7 +28,6 @@ const DeleteCourse = () => {
     axios
       .delete(`http://localhost:8000/course/${id}`)
       .then((response) => {
-        console.log(response);
         toast.success("Course Deleted successfully");
         document.getElementById("my_modal_5").close();
         navigate("/dashboard/all-courses");

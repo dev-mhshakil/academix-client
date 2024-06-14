@@ -18,7 +18,6 @@ const CourseTable = ({ course, index }) => {
       axios
         .get(`http://localhost:8000/user/${user?.email}`)
         .then((response) => {
-          console.log(response.data);
           setUserData(response.data);
         });
     }
@@ -30,13 +29,11 @@ const CourseTable = ({ course, index }) => {
       axios
         .get(`http://localhost:8000/course/edit/${course?._id}`)
         .then((response) => {
-          console.log(response.data);
           setCourseData(response.data);
         });
     }
   }, [course?._id, user?.email]);
 
-  console.log(userData?.email, courseData?.userEmail);
   return (
     <>
       <tbody>
