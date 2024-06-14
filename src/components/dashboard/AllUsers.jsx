@@ -6,9 +6,11 @@ const AllUsers = () => {
   const [usersList, setUsersList] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/users").then((response) => {
-      setUsersList(response?.data);
-    });
+    axios
+      .get("https://academix-server-xe39.onrender.com//users")
+      .then((response) => {
+        setUsersList(response?.data);
+      });
   }, []);
   return (
     <div className="w-[400px] md:w-full">

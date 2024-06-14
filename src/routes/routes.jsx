@@ -58,20 +58,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/success",
-        element: (
-          <PrivateRoute>
-            <SuccessPage />
-          </PrivateRoute>
-        ),
+        path: "payment/success",
+        element: <SuccessPage />,
       },
       {
-        path: "/cancel",
-        element: (
-          <PrivateRoute>
-            <CancelPage />
-          </PrivateRoute>
-        ),
+        path: "payment/cancel",
+        element: <CancelPage />,
       },
     ],
   },

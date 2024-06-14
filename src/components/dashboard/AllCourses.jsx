@@ -7,9 +7,11 @@ const AllCourses = () => {
 
   useEffect(() => {
     async function load() {
-      axios.get("http://localhost:8000/courses").then((response) => {
-        setCourses(response?.data);
-      });
+      axios
+        .get("https://academix-server-xe39.onrender.com//courses")
+        .then((response) => {
+          setCourses(response?.data);
+        });
     }
     load();
   }, []);

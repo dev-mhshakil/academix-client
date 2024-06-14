@@ -12,9 +12,11 @@ const AddCourse = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:8000/user/${user.email}`).then((response) => {
-        setUserData(response.data);
-      });
+      axios
+        .get(`https://academix-server-xe39.onrender.com//user/${user.email}`)
+        .then((response) => {
+          setUserData(response.data);
+        });
     }
   }, [user?.email]);
 
@@ -47,7 +49,7 @@ const AddCourse = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/courses",
+        "https://academix-server-xe39.onrender.com//courses",
         courseData,
         {
           headers: {

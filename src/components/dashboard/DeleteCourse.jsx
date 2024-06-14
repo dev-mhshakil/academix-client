@@ -17,7 +17,7 @@ const DeleteCourse = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/course/${id}`)
+      .get(`https://academix-server-xe39.onrender.com//course/${id}`)
       .then((response) => {
         setCourseData(response.data);
       })
@@ -28,7 +28,7 @@ const DeleteCourse = () => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:8000/course/${id}`, {
+      .delete(`https://academix-server-xe39.onrender.com//course/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

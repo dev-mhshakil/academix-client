@@ -17,9 +17,11 @@ const EditCourse = () => {
   // get user data from server
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:8000/user/${user.email}`).then((response) => {
-        setUserData(response.data);
-      });
+      axios
+        .get(`https://academix-server-xe39.onrender.com//user/${user.email}`)
+        .then((response) => {
+          setUserData(response.data);
+        });
     }
   }, [user?.email]);
 
@@ -27,7 +29,7 @@ const EditCourse = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:8000/course/edit/${id?.id}`)
+        .get(`https://academix-server-xe39.onrender.com//course/edit/${id?.id}`)
         .then((response) => {
           setCourseData(response.data);
         });
@@ -62,7 +64,7 @@ const EditCourse = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/course/edit/${id?.id}`,
+        `https://academix-server-xe39.onrender.com//course/edit/${id?.id}`,
         courseData,
         {
           headers: {

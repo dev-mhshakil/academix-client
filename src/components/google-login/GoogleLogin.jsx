@@ -15,7 +15,7 @@ const GoogleLogin = () => {
         };
 
         axios
-          .post("http://localhost:8000/user", user)
+          .post("https://academix-server-xe39.onrender.com//user", user)
           .then(function (response) {
             if (response.status === 400) {
               toast.error("Email already registered.");

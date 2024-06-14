@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { MdOutlineAssignment } from "react-icons/md";
 import { useParams } from "react-router-dom";
@@ -9,9 +9,34 @@ const CheckOut = () => {
 
   const [course, setCourse] = useState();
 
-  axios.get(`http://localhost:8000/course/${id?.id}`).then((response) => {
-    setCourse(response.data);
-  });
+  useEffect(() => {
+    axios
+      .get(`https://academix-server-xe39.onrender.com//course/${id?.id}`)
+      .then((response) => {
+        setCourse(response.data);
+      });
+  }, [id?.id]);
+
+  const handleCheckout = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const productId = course?._id;
+    const orderData = {
+      productId,
+      name,
+      email,
+      phone,
+    };
+    axios
+      .post("https://academix-server-xe39.onrender.com//orders", orderData)
+      .then(function (response) {
+        const url = response.data.url;
+        window.location.replace(url);
+      });
+  };
 
   return (
     <div className="max-w-[1240px] h-full md:h-[calc(100vh-96px)] mx-auto">
@@ -59,12 +84,13 @@ const CheckOut = () => {
             <p className="text-center">
               Price: <span className="text-primary">${course?.price}</span>
             </p>
-            <form action="">
+            <form onSubmit={handleCheckout} action="">
               <div className="flex flex-col mt-6">
                 <label htmlFor="">Full Name</label>
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="border py-3 rounded-md outline-primary mt-3 px-4"
                   placeholder="full name"
                 />
@@ -74,6 +100,7 @@ const CheckOut = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="border py-3 rounded-md outline-primary mt-3 px-4"
                   placeholder="email address"
                 />
@@ -82,7 +109,8 @@ const CheckOut = () => {
                 <label htmlFor="">Phone Number</label>
                 <input
                   type="number"
-                  id="number"
+                  id="phone"
+                  name="phone"
                   className="border py-3 rounded-md outline-primary mt-3 px-4"
                   placeholder="phone number"
                 />
