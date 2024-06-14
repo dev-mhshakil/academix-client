@@ -18,6 +18,7 @@ import DeleteCourse from "../components/dashboard/DeleteCourse";
 import SuccessPage from "../components/payment/SuccessPage";
 import CancelPage from "../components/payment/CancelPage";
 import CheckOut from "../components/payment/CheckOut";
+import FailPage from "../components/payment/FailPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "payment/cancel",
         element: <CancelPage />,
+      },
+      {
+        path: "payment/fail",
+        element: <FailPage />,
       },
     ],
   },
