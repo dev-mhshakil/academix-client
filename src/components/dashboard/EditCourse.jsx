@@ -82,13 +82,14 @@ const EditCourse = () => {
     <div className="max-w-[1240px] h-full mx-0 md:mx-auto">
       <h1 className="text-4xl text-center text-primary my-8">Edit Course</h1>
       <div className="w-[320px] mx-2 lg:w-[800px] border rounded-md border-t-2 border-t-primary px-3 py-12 shadow-md">
-        {userData?.role === "instructor" &&
-        userData?.email === courseData?.userEmail ? (
+        {(userData?.role === "instructor" &&
+          userData?.email === courseData?.userEmail) ||
+        userData?.role === "admin" ? (
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
               <label htmlFor="title">Course Title</label>
               <input
-                defaultValue={courseData.title}
+                defaultValue={courseData?.title}
                 type="text"
                 id="title"
                 name="title"
@@ -109,7 +110,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="courseBanner">Course Banner URL</label>
               <input
-                defaultValue={courseData.courseBanner}
+                defaultValue={courseData?.courseBanner}
                 type="text"
                 id="courseBanner"
                 name="courseBanner"
@@ -120,7 +121,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="instructor">Instructor Name</label>
               <input
-                defaultValue={courseData.instructor}
+                defaultValue={courseData?.instructor}
                 type="text"
                 id="instructor"
                 name="instructor"
@@ -131,7 +132,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="instructorPhoto">Instructor Photo URL</label>
               <input
-                defaultValue={courseData.instructor}
+                defaultValue={courseData?.instructor}
                 type="text"
                 id="instructorPhoto"
                 name="instructorPhoto"
@@ -142,7 +143,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="category">Category</label>
               <select
-                defaultValue={courseData.category}
+                defaultValue={courseData?.category}
                 name="category"
                 className="border py-3 rounded-md outline-primary mt-3 px-4"
               >
@@ -153,7 +154,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="duration">Course Duration</label>
               <input
-                defaultValue={courseData.courseDuration}
+                defaultValue={courseData?.courseDuration}
                 type="text"
                 id="duration"
                 name="duration"
@@ -164,7 +165,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="price">Course Price</label>
               <input
-                defaultValue={courseData.price}
+                defaultValue={courseData?.price}
                 type="text"
                 id="price"
                 name="price"
@@ -175,7 +176,7 @@ const EditCourse = () => {
             <div className="flex flex-col mt-6">
               <label htmlFor="level">Level</label>
               <select
-                defaultValue={courseData.level}
+                defaultValue={courseData?.level}
                 id="level"
                 name="level"
                 className="border py-3 rounded-md outline-primary mt-3 px-4"

@@ -19,6 +19,9 @@ import SuccessPage from "../components/payment/SuccessPage";
 import CancelPage from "../components/payment/CancelPage";
 import CheckOut from "../components/payment/CheckOut";
 import FailPage from "../components/payment/FailPage";
+import CourseDetails from "../components/courses/CourseDetails";
+import Profile from "../components/dashboard/Profile";
+import EditUser from "../components/dashboard/EditUser";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+      },
+      {
+        path: "/courses/details/:id",
+        element: <CourseDetails />,
       },
       {
         path: "/blog",
@@ -86,6 +93,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "admin/users/edit/:email",
+        element: (
+          <PrivateRoute>
+            <EditUser />
           </PrivateRoute>
         ),
       },

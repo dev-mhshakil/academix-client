@@ -26,7 +26,7 @@ const Features = () => {
     },
   ];
   return (
-    <div className="max-w-[1240px] mx-auto px-4">
+    <div className="max-w-[1240px] mx-auto px-4 mt-20">
       <p className="text-center text-primary text-xl">Features</p>
       <h1 className="text-3xl md:text-4xl font-semibold py-4 text-center">
         One Platform Many Course
@@ -37,7 +37,7 @@ const Features = () => {
           return (
             <div
               key={index}
-              className="flex flex-col justify-center items-center w-[260px] md:w-[360px] h-[260px] md:h-[340px] mx-auto border border-opacity-50 border-secondary/60 hover:rounded-tr-[60px] ease-in duration-300 rounded-md  shadow-sm hover:border-2  hover:rounded-r-lg hover:border-primary hover:bg-secondary/60"
+              className="flex flex-col justify-center items-center w-full md:w-[360px] h-[260px] md:h-[340px] mx-auto border border-opacity-50 border-secondary/60 hover:rounded-tr-[60px] ease-in duration-300 rounded-md  shadow-sm hover:border-2  hover:rounded-r-lg hover:border-primary hover:bg-secondary/60"
             >
               <div className="bg-secondary hover:text-white text-primary hover:bg-primary p-4 rounded-full">
                 {feature.icon}

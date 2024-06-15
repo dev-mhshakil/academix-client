@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseCard from "../components/courses/CourseCard";
 import axios from "axios";
 
 const Courses = () => {
   const [courses, setCourses] = useState();
 
-  axios
-    .get("https://academix-server-xe39.onrender.com/courses")
-    .then(function (response) {
-      setCourses(response.data);
-    });
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_APP_LIVE}/courses`)
+      .then(function (response) {
+        setCourses(response.data);
+      });
+  }, []);
 
   return (
     <div className="max-w-[1240px] mx-auto my-20">

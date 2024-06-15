@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -30,25 +31,29 @@ const Register = () => {
     }
 
     try {
-      const result = await createUser(email, password);
+      const result = await createUser(email, password).then(function (
+        response
+      ) {
+        if (response?.user?.email) {
+          const user = {
+            email: response.user.email,
+            name: `${firstName} ${lastName}`,
+            role: role,
+          };
+
+          axios
+            .post(`${import.meta.env.VITE_APP_LIVE}/user`, user)
+            .then(function (response) {
+              if (response.status === 400) {
+                toast.error("Email already registered.");
+              } else if (response.status === 200) {
+                toast.success("Registration Complete.");
+                localStorage.setItem("token", response.data.token);
+              }
+            });
+        }
+      });
       form.reset();
-
-      if (result?.user?.email) {
-        const user = {
-          email: result.user.email,
-          name: `${firstName} ${lastName}`,
-          role: role,
-        };
-
-        axios.post("http://locahost:8000/user", user).then(function (response) {
-          if (response.status === 400) {
-            toast.error("Email already registered.");
-          } else if (response.status === 200) {
-            toast.success("Registration Complete.");
-            localStorage.setItem("token", response.data.token);
-          }
-        });
-      }
     } catch (error) {
       toast.error("Email already registered. Try another email address.");
     }

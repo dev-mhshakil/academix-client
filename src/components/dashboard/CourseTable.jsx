@@ -19,7 +19,7 @@ const CourseTable = ({ course, index }) => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://academix-server-xe39.onrender.com/user/${user?.email}`)
+        .get(`${import.meta.env.VITE_APP_LIVE}/user/${user?.email}`)
         .then((response) => {
           setUserData(response.data);
         });
@@ -30,9 +30,7 @@ const CourseTable = ({ course, index }) => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(
-          `https://academix-server-xe39.onrender.com/course/edit/${course?._id}`
-        )
+        .get(`${import.meta.env.VITE_APP_LIVE}/course/edit/${course?._id}`)
         .then((response) => {
           setCourseData(response.data);
         });
@@ -51,7 +49,7 @@ const CourseTable = ({ course, index }) => {
   //   };
 
   //   const paymentResponse = await axios
-  //     .post("https://academix-server-xe39.onrender.com/create-checkout-session", coursePaymentData)
+  //     .post("${import.meta.env.VITE_APP_LIVE}/create-checkout-session", coursePaymentData)
   //     .then((response) => {
   //       console.log(response.data);
   //     });
@@ -120,7 +118,8 @@ const CourseTable = ({ course, index }) => {
                 >
                   <FaRegEdit size={20} /> <span>Edit</span>
                 </Link>
-                {userData?.email === courseData?.userEmail ? (
+                {userData?.email === courseData?.userEmail ||
+                userData?.role === "admin" ? (
                   <Link
                     to={`/dashboard/course/delete/${course?._id}`}
                     className="font-medium text-white px-8 py-2 bg-red-600 hover:bg-red-800 flex items-center gap-3"

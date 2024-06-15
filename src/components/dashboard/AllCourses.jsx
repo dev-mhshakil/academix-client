@@ -7,14 +7,12 @@ const AllCourses = () => {
 
   useEffect(() => {
     async function load() {
-      axios
-        .get("https://academix-server-xe39.onrender.com/courses")
-        .then((response) => {
-          setCourses(response?.data);
-        });
+      axios.get(`${import.meta.env.VITE_APP_LIVE}/courses`).then((response) => {
+        setCourses(response?.data);
+      });
     }
     load();
-  }, []);
+  }, [courses]);
   return (
     <div className="w-[400px] md:w-full">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

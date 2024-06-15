@@ -6,12 +6,11 @@ import { useParams } from "react-router-dom";
 
 const CheckOut = () => {
   const id = useParams();
-
   const [course, setCourse] = useState();
 
   useEffect(() => {
     axios
-      .get(`https://academix-server-xe39.onrender.com/course/${id?.id}`)
+      .get(`${import.meta.env.VITE_APP_LIVE}/course/${id?.id}`)
       .then((response) => {
         setCourse(response.data);
       });
@@ -31,7 +30,7 @@ const CheckOut = () => {
       phone,
     };
     axios
-      .post("https://academix-server-xe39.onrender.com/orders", orderData)
+      .post(`${import.meta.env.VITE_APP_LIVE}/orders`, orderData)
       .then(function (response) {
         const url = response.data.url;
         window.location.replace(url);

@@ -12,7 +12,7 @@ const Home = () => {
       <div className="mt-20">
         <div className="flex flex-col justify-center">
           <p className="text-center text-xl text-primary ">Our Courses List</p>
-          <h1 className="text-4xl text-center mt-4 font-bold">
+          <h1 className="text-3xl md:text-4xl text-center mt-4 font-bold">
             Most Popular Courses
           </h1>
         </div>

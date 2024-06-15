@@ -7,6 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaHome } from "react-icons/fa";
+import { ImProfile } from "react-icons/im";
 
 const DashboardLayout = () => {
   const { logout } = useAuth();
@@ -49,6 +50,12 @@ const DashboardLayout = () => {
             <Link to="/dashboard">
               <GiPieChart size={20} />
               <span className="text-base md:text-lg ml-2">Dashboard</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/profile">
+              <ImProfile size={20} />{" "}
+              <span className="text-base md:text-lg ml-2">Profile</span>
             </Link>
           </li>
           <li>

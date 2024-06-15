@@ -11,11 +11,11 @@ const GoogleLogin = () => {
         const user = {
           email: result.user.email,
           name: result.user.displayName,
-          role: "Student",
+          role: "student",
         };
 
         axios
-          .post("https://academix-server-xe39.onrender.com/user", user)
+          .post(`${import.meta.env.VITE_APP_LIVE}/user`, user)
           .then(function (response) {
             if (response.status === 400) {
               toast.error("Email already registered.");

@@ -13,7 +13,7 @@ const AddCourse = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://academix-server-xe39.onrender.com/user/${user.email}`)
+        .get(`${import.meta.env.VITE_APP_LIVE}/user/${user.email}`)
         .then((response) => {
           setUserData(response.data);
         });
@@ -49,7 +49,7 @@ const AddCourse = () => {
 
     try {
       const response = await axios.post(
-        "https://academix-server-xe39.onrender.com/courses",
+        `${import.meta.env.VITE_APP_LIVE}/courses`,
         courseData,
         {
           headers: {
@@ -69,7 +69,7 @@ const AddCourse = () => {
     <div className="max-w-[1240px] h-full mx-0 md:mx-auto">
       <h1 className="text-4xl text-center text-primary my-8">Add Course</h1>
       <div className="w-[320px] mx-2 lg:w-[800px] border rounded-md border-t-2 border-t-primary px-3 py-12 shadow-md">
-        {userData?.role === "instructor" ? (
+        {userData?.role === "instructor" || userData?.role === "admin" ? (
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
               <label htmlFor="title">Course Title</label>
@@ -127,7 +127,8 @@ const AddCourse = () => {
                 className="border py-3 rounded-md outline-primary mt-3 px-4"
               >
                 <option value="Web Development">Web Development</option>
-                <option value="SEO">SEO</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Design">Design</option>
               </select>
             </div>
             <div className="flex flex-col mt-6">
