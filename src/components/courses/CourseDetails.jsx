@@ -20,7 +20,7 @@ const CourseDetails = () => {
   const [courseData, setCourseData] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/course/${id?.id}`).then((response) => {
+    axios.get(`${import.meta.env.VITE_APP_LIVE}/course/${id?.id}`).then((response) => {
       console.log(response);
       setCourseData(response?.data);
     });
